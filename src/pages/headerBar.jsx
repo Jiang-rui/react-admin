@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import screenfull from 'screenfull';
 import { Menu, Dropdown, Icon } from 'antd';
 import img from '../imgs/1.jpg';
 const menu = (
@@ -22,21 +23,29 @@ const menu = (
 );
 export default class HeaderBar extends Component {
   state = {
-    showMask: false
+    showMask: false,
+    fullScreen: false
   }
   togglePhoto = () => {
     const { showMask } = this.state;
-
     this.setState({
       showMask: !showMask
     })
   }
+  FullScreenToggle = () => {
+    const { fullScreen } = this.state;
+    this.setState({
+      fullScreen: !fullScreen
+    })
+    screenfull.toggle()
+  }
   render() {
     const { collapsed, onToggle } = this.props;
-    const { showMask } = this.state;
+    const { showMask, fullScreen } = this.state;
     return (
       <React.Fragment>
-        <Icon onClick={onToggle} type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+        <Icon style={{ fontSize: '20px'}} onClick={onToggle} type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+        <Icon style={{ fontSize: '20px', position: 'absolute', right: '90px', top: '24px' }} onClick={this.FullScreenToggle} type={fullScreen ? 'fullscreen-exit' : 'fullscreen'} />
         <div className="avatar-box">
           <Dropdown overlay={menu}>
             <img onClick={this.togglePhoto} src={img} alt="头像" />

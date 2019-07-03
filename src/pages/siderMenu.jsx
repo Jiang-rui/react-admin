@@ -33,7 +33,7 @@ export default class SiderMenu extends Component {
               >{menuList}</SubMenu>
             } else {
               menu = <Menu.Item key={router.Link}>
-                <Link to={router.Link}>
+                <Link to={router.name}>
                   <Icon type={router.icon} />
                   <span>{router.name}</span>
                 </Link>

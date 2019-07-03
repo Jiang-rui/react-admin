@@ -43,12 +43,9 @@ export default class Page extends Component {
             .side-menu-title{
               width: 60%;
               height: 26px;
-              color: #eee;
               text-align: center;
-              font-size: 14px;
-              line-height: 26px;
-              margin: 30px 0 30px 13%;
-              border: 1px solid #aaa;
+              margin: 30px 0 30px 20%;
+              border: 2px solid #666;
             }
             `
           }
