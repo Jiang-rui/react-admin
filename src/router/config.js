@@ -1,6 +1,8 @@
-
+/**
+ * 侧边的菜单路由配置
+ */
 export const routerLink = [
-  { name: "首页", icon: "home", Link: '/page/index', component: 'Index' },
+  { name: "首页", icon: "home", Link: '/page', component: 'Index' },
   {
     name: "模板管理", icon: "snippets",
     subMenu: [

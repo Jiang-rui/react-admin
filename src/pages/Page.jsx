@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import AsyncLoading from '../components/AsyncLoad/asyncLoad'
 const { Header, Footer, Sider, Content } = Layout;
 
 const SiderMenu = AsyncLoading(() => import('./siderMenu'))
 const HeaderBar = AsyncLoading(() => import('./headerBar.jsx'))
-const ContentRouter = AsyncLoading(() => import('../router/router'))
+const Index = AsyncLoading(() => import('./index/index.jsx'))
+const NotFound = AsyncLoading(() => import('../components/NotFound/notFound'));
+const MainContent = AsyncLoading(() => import('./content.jsx'));
 
 export default class Page extends Component {
   state = {
@@ -33,7 +36,11 @@ export default class Page extends Component {
             <HeaderBar collapsed={collapsed} onToggle={this.toggle} />
           </Header>
           <Content>
-            <ContentRouter />
+            {/* <Switch>
+              <Route path="/page" exact render={() => <Index />} />
+              <Route path="/page/index" render={() => <Index />} />
+            </Switch> */}
+            <MainContent />
           </Content>
           <Footer style={{ textAlign: 'center' }}>React-Admin ©{new Date().getFullYear()}</Footer>
         </Layout>
@@ -46,6 +53,10 @@ export default class Page extends Component {
               text-align: center;
               margin: 30px 0 30px 20%;
               border: 2px solid #666;
+            }
+            .ant-layout-content{
+              min-height:700px;
+              position:relative;
             }
             `
           }
