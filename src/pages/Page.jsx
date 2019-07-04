@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import AsyncLoading from '../components/AsyncLoad/asyncLoad'
 const { Header, Footer, Sider, Content } = Layout;
 
 const SiderMenu = AsyncLoading(() => import('./siderMenu'))
 const HeaderBar = AsyncLoading(() => import('./headerBar.jsx'))
-const Index = AsyncLoading(() => import('./index/index.jsx'))
-const NotFound = AsyncLoading(() => import('../components/NotFound/notFound'));
-const MainContent = AsyncLoading(() => import('./content.jsx'));
+const CRouter = AsyncLoading(() => import('./CRouter.jsx'));
 
 export default class Page extends Component {
   state = {
@@ -36,11 +33,7 @@ export default class Page extends Component {
             <HeaderBar collapsed={collapsed} onToggle={this.toggle} />
           </Header>
           <Content>
-            {/* <Switch>
-              <Route path="/page" exact render={() => <Index />} />
-              <Route path="/page/index" render={() => <Index />} />
-            </Switch> */}
-            <MainContent />
+            <CRouter />
           </Content>
           <Footer style={{ textAlign: 'center' }}>React-Admin ©{new Date().getFullYear()}</Footer>
         </Layout>

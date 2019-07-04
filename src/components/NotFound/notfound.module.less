@@ -10,4 +10,31 @@
     transform-origin: 0 0;
   }
 
+  .img_animate {
+    width: 100%;
+    transform-origin: 0 0;
+    animation: vibration 1s;
+  }
+}
+
+@keyframes vibration {
+  20% {
+    transform: rotate(110deg);
+  }
+
+  40% {
+    transform: rotate(70deg);
+  }
+
+  60% {
+    transform: rotate(100deg);
+  }
+
+  80% {
+    transform: rotate(80deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
 }
