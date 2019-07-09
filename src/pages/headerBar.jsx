@@ -1,3 +1,6 @@
+/**
+ * 头部内容
+ */
 import React, { Component } from 'react';
 import screenfull from 'screenfull';
 import { Menu, Dropdown, Icon } from 'antd';
