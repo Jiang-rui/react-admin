@@ -2,22 +2,47 @@
  * 面包屑组件
  */
 import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
+import { Config } from './breadConfig.js';
 
-// const { BreadcrumbItem } = Breadcrumb
-export default class BreadcrumbCustom extends Component {
+class BreadcrumbCustom extends Component {
+  state = {
+    breads: []
+  }
+  componentDidMount() {
+    const { location: { pathname } = {} } = this.props;
+    Config.map(configItem => {
+      if (configItem.path === pathname) {
+        console.log(configItem.breads)
+        this.setState({
+          breads: configItem.breads
+        })
+      }
+    })
+  }
   render() {
-    const { first, second, thread } = this.props;
+    const { breads } = this.state;
     return (
       <Breadcrumb separator="/">
-        {first ? <Breadcrumb.Item>{first}</Breadcrumb.Item> : ''}
-        {second ? <Breadcrumb.Item>{second}</Breadcrumb.Item> : ''}
-        {thread ? <Breadcrumb.Item>{thread}</Breadcrumb.Item> : ''}
+        <Breadcrumb.Item> <Link to="/page">首页</Link></Breadcrumb.Item>
+        {
+          breads && breads.length > 0 && breads.map(bread => {
+            let breadcrumbItem = ''
+            if (Object.prototype.toString.call(bread) === '[object Object]') {
+              breadcrumbItem = <Breadcrumb.Item key={bread.to}> <Link to={bread.to}>{bread.name}</Link></Breadcrumb.Item>
+            } else {
+              breadcrumbItem = <Breadcrumb.Item>{bread.name}</Breadcrumb.Item>
+            }
+            return breadcrumbItem;
+          })
+        }
+
         <style>
           {
             `
             .ant-breadcrumb{
-              margin:20px 0 0 20px;
+              margin: 20px;
             }
             `
           }
@@ -27,3 +52,4 @@ export default class BreadcrumbCustom extends Component {
     );
   }
 }
+export default withRouter(BreadcrumbCustom);

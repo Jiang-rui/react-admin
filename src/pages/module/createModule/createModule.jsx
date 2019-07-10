@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-
+import BreadcrumbCustom from '../../BreadCrumb';
 
 export default class CreateModule extends Component {
   render() {
-    return <div>创建模板</div>
+    return (
+      <React.Fragment>
+        <BreadcrumbCustom />
+        <div>创建模板</div>
+      </React.Fragment>
+    )
   }
 }

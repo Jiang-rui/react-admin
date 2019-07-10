@@ -8,14 +8,19 @@ const Index = AsyncLoading(() => import('./index/index.jsx'))
 const NotFound = AsyncLoading(() => import('../components/NotFound/notFound'));
 const Module = AsyncLoading(() => import('./module/index.jsx'))
 const Editor = AsyncLoading(() => import('./Editor/Editor'))
+const Loading = AsyncLoading(() => import('../components/AsyncLoad/Loading'))
+
 export default function CRouter() {
   return (
-    <Switch>
-      <Route path="/page" exact render={() => <Index />} />
-      <Route path="/page/index" render={() => <Index />} />
-      <Route path="/page/module" render={() => <Module />} />
-      <Route path="/page/richtext" render={() => <Editor />} />
-      <Route path="/page/*" render={() => <NotFound />} />
-    </Switch>
+    <React.Fragment>
+      <Switch>
+        <Route path="/page" exact render={() => <Index />} />
+        <Route path="/page/index" render={() => <Index />} />
+        <Route path="/page/module" render={() => <Module />} />
+        <Route path="/page/richtext" render={() => <Editor />} />
+        <Route path="/page/loading" render={() => <Loading />} />
+        <Route path="/page/*" render={() => <NotFound />} />
+      </Switch>
+    </React.Fragment>
   )
 }

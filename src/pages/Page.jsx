@@ -4,8 +4,8 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 import AsyncLoading from '../components/AsyncLoad/asyncLoad'
-const { Header, Footer, Sider, Content } = Layout;
 
+const { Header, Footer, Sider, Content } = Layout;
 const SiderMenu = AsyncLoading(() => import('./siderMenu'))
 const HeaderBar = AsyncLoading(() => import('./headerBar.jsx'))
 const CRouter = AsyncLoading(() => import('./CRouter.jsx'));

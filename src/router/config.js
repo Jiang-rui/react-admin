@@ -3,7 +3,8 @@
  */
 export const routerLink = [
   { name: "首页", icon: "home", Link: '/page', },
-  { name: '富文本编辑器', icon: "file-text", Link: '/page/richtext', },
+  { name: '富文本编辑器', icon: "file-text", Link: '/page/richtext' },
+  { name: 'Loading', icon: "loading", Link: '/page/loading' },
   {
     name: "模板管理", icon: "snippets",
     subMenu: [

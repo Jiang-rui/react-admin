@@ -140,7 +140,7 @@ export default class Index extends Component {
   render() {
     return (
       <React.Fragment>
-        <BreadcrumbCustom first="首页" second="图表" thread="第三序列" />
+        <BreadcrumbCustom />
         <div>
           <div className={indexLess.charts} ref={(ele) => this.chart1 = ele} />
           <div className={indexLess.charts} ref={(ele) => this.chart2 = ele} />
