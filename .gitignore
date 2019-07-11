@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 yarn.lock
-npm.lock
+package-lock.json
