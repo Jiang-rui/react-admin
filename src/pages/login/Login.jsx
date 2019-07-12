@@ -48,13 +48,13 @@ class Login extends Component {
             valuePropName: 'checked',
             initialValue: true,
           })(<Checkbox>记住密码</Checkbox>)}
-          <a className={logincss.login_form_forgot} href="javascript:;">
+          <a className={logincss.login_form_forgot} href="">
             忘记密码
           </a>
           <Button type="primary" htmlType="submit" className={logincss.login_form_button}>
             登录
           </Button>
-          Or <a href="javascript:;">现在去注册!</a>
+          Or <a href="">现在去注册!</a>
         </Form.Item>
       </Form>
     )

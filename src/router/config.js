@@ -1,5 +1,8 @@
 /**
  * 侧边的菜单路由配置
+ * name:导航菜单名称
+ * link:路由链接
+ * icon:使用的图标
  */
 export const routerLink = [
   { name: "首页", icon: "home", Link: '/page', },
@@ -11,7 +14,8 @@ export const routerLink = [
       { name: '创建模板', Link: '/page/module/create', },
       { name: '模板列表', Link: '/page/module/list', },
     ]
-  }, {
+  },
+  {
     name: "审核管理", icon: "audit",
     subMenu: [
       { name: '未提交列表', Link: '/page/ui13', },

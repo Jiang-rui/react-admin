@@ -14,7 +14,6 @@ class BreadcrumbCustom extends Component {
     const { location: { pathname } = {} } = this.props;
     Config.map(configItem => {
       if (configItem.path === pathname) {
-        console.log(configItem.breads)
         this.setState({
           breads: configItem.breads
         })
@@ -30,9 +29,9 @@ class BreadcrumbCustom extends Component {
           breads && breads.length > 0 && breads.map(bread => {
             let breadcrumbItem = ''
             if (Object.prototype.toString.call(bread) === '[object Object]') {
-              breadcrumbItem = <Breadcrumb.Item key={bread.to}> <Link to={bread.to}>{bread.name}</Link></Breadcrumb.Item>
+              breadcrumbItem = <Breadcrumb.Item key={bread.name}> <Link to={bread.to}>{bread.name}</Link></Breadcrumb.Item>
             } else {
-              breadcrumbItem = <Breadcrumb.Item>{bread.name}</Breadcrumb.Item>
+              breadcrumbItem = <Breadcrumb.Item key={bread.name}>{bread.name}</Breadcrumb.Item>
             }
             return breadcrumbItem;
           })

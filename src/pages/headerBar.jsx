@@ -5,29 +5,14 @@ import React, { Component } from 'react';
 import screenfull from 'screenfull';
 import { Menu, Dropdown, Icon } from 'antd';
 import img from '../imgs/1.jpg';
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-        查看个人信息
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.baidu.com">
-        更换头像
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-        退出登录
-      </a>
-    </Menu.Item>
-  </Menu>
-);
+// const menu = (
+
+// );
+
 export default class HeaderBar extends Component {
   state = {
     showMask: false,
-    fullScreen: false
+    fullScreen: false,
   }
   togglePhoto = () => {
     const { showMask } = this.state;
@@ -42,15 +27,42 @@ export default class HeaderBar extends Component {
     })
     screenfull.toggle()
   }
+  logOut = () => {
+    alert("您已退出登录！")
+  }
+  getMenu = () => {
+    return (<Menu>
+      <Menu.Item>
+        <p rel="noopener noreferrer" >
+          个人信息
+      </p>
+      </Menu.Item>
+      <Menu.Item>
+        <p rel="noopener noreferrer" >
+          更改密码
+      </p>
+      </Menu.Item>
+      <Menu.Item>
+        <p rel="noopener noreferrer" >
+          设置
+      </p>
+      </Menu.Item>
+      <Menu.Item>
+        <p rel="noopener noreferrer" onClick={this.logOut}>
+          退出登录
+      </p>
+      </Menu.Item>
+    </Menu>)
+  }
   render() {
     const { collapsed, onToggle } = this.props;
     const { showMask, fullScreen } = this.state;
     return (
       <React.Fragment>
-        <Icon style={{ fontSize: '20px'}} onClick={onToggle} type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+        <Icon style={{ fontSize: '20px' }} onClick={onToggle} type={collapsed ? 'menu-unfold' : 'menu-fold'} />
         <Icon style={{ fontSize: '20px', position: 'absolute', right: '90px', top: '24px' }} onClick={this.FullScreenToggle} type={fullScreen ? 'fullscreen-exit' : 'fullscreen'} />
         <div className="avatar-box">
-          <Dropdown overlay={menu}>
+          <Dropdown overlay={this.getMenu}>
             <img onClick={this.togglePhoto} src={img} alt="头像" />
           </Dropdown>
         </div>
@@ -71,6 +83,7 @@ export default class HeaderBar extends Component {
               line-height:40px;
               text-align:center;
               cursor:pointer;
+              
             }
             .avatar-box img{
               width:40px;
@@ -92,6 +105,7 @@ export default class HeaderBar extends Component {
               top:0;
               left:0;
               background:rgba(0,0,0,0.6);
+              z-index:9999;
             }
             .mask-box img{
               width:400px;
