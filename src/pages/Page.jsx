@@ -48,7 +48,7 @@ export default class Page extends Component {
               height: 26px;
               text-align: center;
               margin: 30px 0 30px 20%;
-              border: 2px solid #666;
+              background-color: #555;
             }
             .ant-layout-content{
               min-height:700px;

@@ -1,5 +1,6 @@
+// 路由组件加载的过场动画组件
 import React, { Component } from 'react';
-import { Spin, Alert } from 'antd';
+import { Spin } from 'antd';
 // import bodymovin from 'bodymovin';
 import './load.less'
 

@@ -1,0 +1,21 @@
+# 表明是最顶层的配置文件，发现设为true时，才会停止查找.editorconfig文件，否则会往上一层目录继续查找
+root = true
+
+# 对所有文件生效
+[*]
+# 编码格式，支持latin1、utf-8、utf-8-bom、utf-16be和utf-16le，通常使用utf-8
+charset = utf-8
+# 缩进类型, 支持space 空格, tab 制表符
+indent_style = space
+# 缩进长度，支持整数 - 缩进的长度, tab - 使用tab_width指定的值
+indent_size = 2
+# 换行符，支持 lf - (常用,*nux系统), crlf - windows, cr - <=MacOS9
+end_of_line = lf
+# 保存文件时是否在文件最后插入一个空行, 支持 true - 是, false - 否
+insert_final_newline = true
+# 是否去除行尾的空格, 支持 true - 是, false - 否
+trim_trailing_whitespace = true
+
+# 对后缀名为 md 的文件生效
+[*.md]
+trim_trailing_whitespace = false
