@@ -8,7 +8,6 @@
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
     "antd": "^3.20.0",
-    "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "^0.3.2",
@@ -74,7 +73,9 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "devtools": "react-devtools"
+    "devtools": "react-devtools",
+    "eslint": "eslint --format node_modules/eslint-friendly-formatter --cache --ext .jsx,.js src/",
+    "precommit": "npm run eslint"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -140,5 +141,10 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "husky": "^3.0.1"
   }
 }
