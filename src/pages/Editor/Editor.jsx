@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Card, Button } from 'antd';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw } from 'draft-js';
@@ -8,34 +8,27 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import editorLess from './editor.module.less';
 
 
+export default function RichTextEditor() {
+  const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-export default class RichTextEditor extends Component {
-  state = {
-    editorState: EditorState.createEmpty(),
+  const EditorStateChange = (editorState) => {
+    setEditorState(editorState)
   }
-  getEditorContent = () => {
-    const { editorState } = this.state;
+  const getEditorContent=()=>{
     console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   }
-  EditorStateChange = (editorState) => {
-    this.setState({ editorState })
-  }
-
-  render() {
-    const { editorState } = this.state;
-    return (
-      <React.Fragment>
-        <BreadcrumbCustom />
-        <Card style={{ width: '100%' }}>
-          <Editor
-            editorState={editorState}
-            // onContentStateChange={this.ContentStateChange}
-            onEditorStateChange={this.EditorStateChange}
-            editorClassName={editorLess.editor}
-          />
-          <Button type="primary" onClick={this.getEditorContent}>获取富文本框内容</Button>
-        </Card>
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <BreadcrumbCustom />
+      <Card style={{ width: '100%' }}>
+        <Editor
+          editorState={editorState}
+          // onContentStateChange={this.ContentStateChange}
+          onEditorStateChange={EditorStateChange}
+          editorClassName={editorLess.editor}
+        />
+        <Button type="primary" onClick={getEditorContent}>获取富文本框内容</Button>
+      </Card>
+    </React.Fragment>
+  )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import AsyncLoading from './components/AsyncLoad/asyncLoad'
 // import './App.css';
 const NotFound = AsyncLoading(() => import('./components/NotFound/notFound'));
@@ -8,8 +8,8 @@ const Page = AsyncLoading(() => import('./pages/Page.jsx'))
 export default () => (
   <Router>
     <Switch>
-      <Route path="/" render={() => <Redirect to={{ pathname: '/page' }} />} exact />
-      {/* <Route path="/login" component={Login} /> */}
+      <Route path="/" render={() => <Redirect to={{ pathname: '/login' }} />} exact />
+      <Route path="/login" component={Login} />
       <Route path="/page" component={Page} />
       <Route path="/404" component={NotFound} />
       <Route path="/*" component={NotFound} />
