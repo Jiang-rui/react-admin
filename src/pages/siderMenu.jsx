@@ -1,15 +1,16 @@
 /**
  * 侧边栏
  */
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Icon, } from 'antd';
 import { routerLink } from '../router/config';
 const { SubMenu } = Menu;
-export default class SiderMenu extends Component {
-  // 渲染侧边栏导航栏
-  renderSideBar = () => {
-    return (routerLink.map((router, index) => {
+
+export default function SiderMenu() {
+  const [sideBar, setSiderBar] = useState(null)
+  useEffect(() => {
+    const sideBarMenu = (routerLink.map((router, index) => {
       let menu = '';
       if (router.subMenu && router.subMenu.length > 0) {
         let menuList = router.subMenu.map((subRouter, subIndex) => (
@@ -38,18 +39,17 @@ export default class SiderMenu extends Component {
       }
       return menu;
     }))
-  }
-  render() {
-    return (
-      <Menu
-        defaultSelectedKeys={['1']}
-        mode="inline"
-        theme="dark"
-      >
-        {
-          this.renderSideBar()
-        }
-      </Menu>
-    )
-  }
+    setSiderBar(sideBarMenu)
+  }, [routerLink])
+  return (
+    <Menu
+      defaultSelectedKeys={['1']}
+      mode="inline"
+      theme="dark"
+    >
+      {
+        sideBar
+      }
+    </Menu>
+  )
 }

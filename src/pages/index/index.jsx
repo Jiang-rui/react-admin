@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useRef } from 'react';
 import indexLess from './index.module.less';
 import BreadcrumbCustom from '../BreadCrumb';
 // import AsyncLoading from '../../components/AsyncLoad/asyncLoad';
@@ -276,34 +276,38 @@ var KLineOption = {
     }
   ]
 };
-export default class Index extends Component {
 
-  componentDidMount() {
-    this.setChart()
-  }
-  setChart = () => {
-    const line = echarts.init(this.chart1);
-    const bar = echarts.init(this.chart2);
-    const pie = echarts.init(this.chart3)
-    const kLine = echarts.init(this.chart4)
+export default function Index() {
+  const chart1 = useRef(null)
+  const chart2 = useRef(null)
+  const chart3 = useRef(null)
+  const chart4 = useRef(null)
+  const chart5 = useRef(null)
+  const chart6 = useRef(null)
+  useEffect(() => {
+    setChart();
+  })
+  const setChart = () => {
+    const line = echarts.init(chart1.current);
+    const bar = echarts.init(chart2.current);
+    const pie = echarts.init(chart3.current)
+    const kLine = echarts.init(chart4.current)
     line.setOption(lineOption)
     bar.setOption(barOption)
     pie.setOption(pieOption)
     kLine.setOption(KLineOption)
   }
-  render() {
-    return (
-      <React.Fragment>
-        <BreadcrumbCustom />
-        <div>
-          <div className={indexLess.charts} ref={(ele) => this.chart1 = ele} />
-          <div className={indexLess.charts} ref={(ele) => this.chart2 = ele} />
-          <div className={indexLess.charts} ref={(ele) => this.chart3 = ele} />
-          <div className={indexLess.charts2} ref={(ele) => this.chart4 = ele} />
-          <div className={indexLess.charts} ref={(ele) => this.chart5 = ele} />
-          <div className={indexLess.charts} ref={(ele) => this.chart6 = ele} />
-        </div>
-      </React.Fragment>
-    )
-  }
+  return (
+    <React.Fragment>
+      <BreadcrumbCustom />
+      <div>
+        <div className={indexLess.charts} ref={chart1} />
+        <div className={indexLess.charts} ref={chart2} />
+        <div className={indexLess.charts} ref={chart3} />
+        <div className={indexLess.charts2} ref={chart4} />
+        <div className={indexLess.charts} ref={chart5} />
+        <div className={indexLess.charts} ref={chart6} />
+      </div>
+    </React.Fragment>
+  )
 }
