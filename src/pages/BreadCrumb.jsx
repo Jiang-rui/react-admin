@@ -1,7 +1,7 @@
 /**
  * 面包屑组件
  */
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Breadcrumb } from 'antd';
 import { Config } from './breadConfig.js';
